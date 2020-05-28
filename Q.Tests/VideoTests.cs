@@ -18,7 +18,7 @@ namespace Q.Tests
             var list = new List<Video> {new Video {Id = 1, Name = "Test"}};
             repo.Setup(c => c.GetAllAsync()).ReturnsAsync(list);
 
-            var controller = new HomeController(repo.Object);
+            var controller = new VideoController(repo.Object);
 
             // Act
             var okResult = controller.Get().Result;
@@ -34,7 +34,7 @@ namespace Q.Tests
             var id = 12;
             repo.Setup(c => c.GetByIdAsync(id)).ReturnsAsync(default(Video));
 
-            var controller=new HomeController(repo.Object);
+            var controller=new VideoController(repo.Object);
             var notFoundResult = controller.Get(id).Result.Result;
 
             Assert.IsType<NotFoundResult>(notFoundResult);
@@ -47,7 +47,7 @@ namespace Q.Tests
             var id = 12;
             repo.Setup(c => c.GetByIdAsync(id)).ReturnsAsync(new Video {Id = id,CreatedOnUtc = DateTime.UtcNow,UpdatedOnUtc = DateTime.UtcNow});
 
-            var controller = new HomeController(repo.Object);
+            var controller = new VideoController(repo.Object);
             var found =  (await controller.Get(id)).Result as OkObjectResult;
 
             Assert.IsType<Video>(found.Value);

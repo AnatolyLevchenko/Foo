@@ -45,7 +45,7 @@ namespace Q.Api
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
