@@ -44,8 +44,9 @@ namespace Q.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
         }
     }
 }

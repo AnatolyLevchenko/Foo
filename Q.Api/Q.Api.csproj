@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Q.DataAccess\Q.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\dist\" />
+  </ItemGroup>
+
 </Project>
