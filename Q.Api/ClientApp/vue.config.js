@@ -6,10 +6,10 @@
         proxy: {
             '/': {
                 target: 'http://localhost:51062',
-              //  ws: true,
+                //  ws: true,
                 changeOrigin: true
             },
-           
+
 
         },
         open: true,
