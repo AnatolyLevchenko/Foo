@@ -1,16 +1,10 @@
-import App from './App.vue'
-import test from './components/Test.vue'
+import container from './components/container.vue'
 
 export default [
     {
         path: '/',
-        name: 'home',
-        component: App
-    },
-    {
-        path: '/test',
-        name: 'test',
-        component: test
+        name: 'main',
+        component: container
     },
 
 ]
