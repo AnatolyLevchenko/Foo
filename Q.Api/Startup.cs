@@ -27,6 +27,9 @@ namespace Q.Api
                  ActivatorUtilities.CreateInstance<VideoRepository>(x,
                      Configuration.GetConnectionString("DefaultConnection")));
 
+             services.AddScoped<IBaseRepository<Category>>(x =>
+                 ActivatorUtilities.CreateInstance<CategoryRepository>(x,
+                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -45,8 +48,14 @@ namespace Q.Api
             }
 
             //app.UseHttpsRedirection();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routes.MapSpaFallbackRoute("spa", new { controller = "Home", action = "Index" });
+            });
             app.UseStaticFiles();
+
+           
         }
     }
 }
