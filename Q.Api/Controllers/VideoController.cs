@@ -27,7 +27,8 @@ namespace Q.Api.Controllers
 
         public async Task<ActionResult<Video>> Get(int id)
         {
-            var item = await _videoRepository.GetByIdAsync(id);
+            Video video;
+            var item = await _videoRepository.FilterAll(nameof(video.CategoryId),id);
             if (item == null)
                 return NotFound();
             return Ok(item);

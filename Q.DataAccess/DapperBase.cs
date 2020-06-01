@@ -25,7 +25,7 @@ namespace Q.DataAccess
         {
             using (var connection = new MySqlConnection(_connection))
             {
-                return await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name.ToLower()}");
+                return await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name.ToLower()}").ConfigureAwait(false);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Q.DataAccess
             {
                 var result =
                     await connection.QuerySingleOrDefaultAsync<T>(
-                        $"SELECT * FROM {typeof(T).Name.ToLower()} WHERE Id=@Id", new { Id = id });
+                        $"SELECT * FROM {typeof(T).Name.ToLower()} WHERE Id=@Id", new { Id = id }).ConfigureAwait(false);
                 return result;
             }
         }
@@ -54,12 +54,12 @@ namespace Q.DataAccess
             }
         }
 
-        public IEnumerable<T> FilterAll(string column, object value)
+        public async Task<IEnumerable<T>> FilterAll(string column, object value)
         {
             using (var connection = new MySqlConnection(_connection))
             {
-                var result = connection.Query<T>($"SELECT * FROM {typeof(T).Name.ToLower()} WHERE {column}=@arg",
-                    new { arg = value });
+                var result =  await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name.ToLower()} WHERE {column}=@arg",
+                    new { arg = value }).ConfigureAwait(false);
                 return result;
             }
         }
@@ -69,7 +69,7 @@ namespace Q.DataAccess
         {
             using (var connection = new MySqlConnection(_connection))
             {
-                await connection.ExecuteAsync($"DELETE FROM {typeof(T).Name.ToLower()} WHERE Id=@Id", new { Id = id });
+                await connection.ExecuteAsync($"DELETE FROM {typeof(T).Name.ToLower()} WHERE Id=@Id", new { Id = id }).ConfigureAwait(false);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Q.DataAccess
             using (var connection = new MySqlConnection(_connection))
             {
                 await connection.ExecuteAsync(insertQuery, t);
-                t.Id = await connection.ExecuteScalarAsync<int>("select LAST_INSERT_ID()");
+                t.Id = await connection.ExecuteScalarAsync<int>("select LAST_INSERT_ID()").ConfigureAwait(false);
                 return t;
             }
         }
@@ -92,7 +92,7 @@ namespace Q.DataAccess
 
             using (var connection = new MySqlConnection(_connection))
             {
-                await connection.ExecuteAsync(updateQuery, t);
+                await connection.ExecuteAsync(updateQuery, t).ConfigureAwait(false);
             }
         }
 

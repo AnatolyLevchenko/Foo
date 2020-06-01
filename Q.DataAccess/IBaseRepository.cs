@@ -9,7 +9,7 @@ namespace Q.DataAccess
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
         T Filter(string column, object value);
-        IEnumerable<T> FilterAll(string column, object value);
+        Task<IEnumerable<T>> FilterAll(string column, object value);
         Task DeleteByIdAsync(int id);
         Task<T> InsertAsync(T t);
         Task UpdateAsync(T t);
