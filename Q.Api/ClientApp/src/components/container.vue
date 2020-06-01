@@ -1,7 +1,6 @@
 <template>
   <div>
     <topHeader></topHeader>
-    <span>{{this.$route.name}}</span>
     <div id="photos">
       <div v-for="cat in categories" :key="cat.Id">
         <pict v-bind:category="cat"></pict>
@@ -43,6 +42,7 @@ export default {
   padding: 0;
 }
 body {
+  box-sizing: border-box;
   background: #dadada;
 }
 #photos {

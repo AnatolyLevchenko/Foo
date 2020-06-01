@@ -2,7 +2,8 @@
   <div class="header">
     <a href="#default" class="logo">Company Logo</a>
     <div class="header-right">
-      <a class="active" href="/">Home</a>
+      <input type="text" placeholder="Search here..." />
+      <a href="/">Home</a>
       <a href="/contact">Contact</a>
       <a href="#about">About</a>
     </div>
@@ -26,11 +27,18 @@ export default {};
   float: left;
   color: black;
   text-align: center;
-  padding: 12px;
+  padding: 6px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+}
+.header input {
+  margin: 5px;
+  padding: 3px;
+  float: left;
+  display: block;
+  width: 300px;
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
@@ -43,12 +51,6 @@ export default {};
 .header a:hover {
   background-color: #ddd;
   color: black;
-}
-
-/* Style the active/current link*/
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
 }
 
 /* Float the link section to the right */
