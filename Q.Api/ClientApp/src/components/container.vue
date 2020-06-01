@@ -1,37 +1,47 @@
 <template>
   <div>
     <topHeader></topHeader>
+    <span>{{this.$route.name}}</span>
     <div id="photos">
       <div v-for="cat in categories" :key="cat.Id">
         <pict v-bind:category="cat"></pict>
       </div>
     </div>
+    <MyFooter v-if="loaded" :categories="categories"></MyFooter>
   </div>
 </template>
 
 <script>
 import topHeader from "./Header";
 import pict from "./Picture";
+import MyFooter from "./Footer";
 export default {
   components: {
     topHeader,
-    pict
+    pict,
+    MyFooter
   },
   data: function() {
     return {
-      categories: []
+      categories: [],
+      loaded: false
     };
   },
   methods: {},
   created() {
     this.$http.get("/api/category").then(result => {
       this.categories = result.data;
+      this.loaded = true;
     });
   }
 };
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   background: #dadada;
 }
