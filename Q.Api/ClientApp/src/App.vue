@@ -19,12 +19,30 @@ export default {
 </script>
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-body {
+*:before,
+*:after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+body {
   background: #dadada;
+}
+#app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
 }
 </style>;
 

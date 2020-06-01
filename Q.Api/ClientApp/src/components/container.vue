@@ -36,6 +36,7 @@ export default {
   column-count: 5;
   column-gap: 0px;
   padding: 5px 30px;
+  margin-bottom: 200px;
 }
 
 #photos img {
