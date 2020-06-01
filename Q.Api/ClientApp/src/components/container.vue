@@ -1,22 +1,18 @@
 <template>
   <div>
-    <topHeader></topHeader>
     <div id="photos">
       <div v-for="cat in categories" :key="cat.Id">
         <pict v-bind:category="cat"></pict>
       </div>
     </div>
-    <MyFooter v-if="loaded" :categories="categories"></MyFooter>
   </div>
 </template>
 
 <script>
 import pict from "./Picture";
-import MyFooter from "./Footer";
 export default {
   components: {
-    pict,
-    MyFooter
+    pict
   },
   data: function() {
     return {

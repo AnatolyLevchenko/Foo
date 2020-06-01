@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <a href="#default" class="logo">Company Logo</a>
+    <a href="/" class="logo">Company Logo</a>
     <div class="header-right">
       <input type="text" placeholder="Search here..." />
       <a href="/">Home</a>
