@@ -1,5 +1,5 @@
  <template>
-  <router-link :to="{ path: '/category/'+  this.category.name}">
+  <router-link :to="{name:'Category',params:{name:category.name,Id:category.id}}">
     <img src="https://via.placeholder.com/150" />
   </router-link>
 </template>
