@@ -2,18 +2,25 @@
   <div id="app">
     <topHeader></topHeader>
     <router-view></router-view>
-    <MyFooter :categories="categories"></MyFooter>
+    <MyFooter v-if="CATEGORIES && CATEGORIES.length>0" :categories="CATEGORIES"></MyFooter>
   </div>
 </template>
 
 <script>
 import topHeader from "./components/Header";
 import MyFooter from "./components/Footer";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     topHeader,
     MyFooter
+  },
+  computed: {
+    ...mapGetters(["CATEGORIES"])
+  },
+  mounted() {
+    this.$store.dispatch("GET_CATEGORIES");
   }
 };
 </script>

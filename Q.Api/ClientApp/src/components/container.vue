@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <div id="photos">
-      <div v-for="cat in categories" :key="cat.Id">
-        <pict v-bind:category="cat"></pict>
-      </div>
+  <div id="photos" v-if="CATEGORIES && CATEGORIES.length>0">
+    <div v-for="cat in CATEGORIES" :key="cat.Id">
+      <pict v-bind:category="cat"></pict>
     </div>
   </div>
 </template>
 
 <script>
 import pict from "./Picture";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     pict
@@ -20,13 +20,10 @@ export default {
       loaded: false
     };
   },
-  methods: {},
-  created() {
-    this.$http.get("/api/category").then(result => {
-      this.categories = result.data;
-      this.loaded = true;
-    });
-  }
+  computed: {
+    ...mapGetters(["CATEGORIES"])
+  },
+  methods: {}
 };
 </script>
 
@@ -36,7 +33,7 @@ export default {
   column-count: 5;
   column-gap: 0px;
   padding: 5px 30px;
-  margin-bottom: 200px;
+  margin-bottom: 380px;
 }
 
 #photos img {
