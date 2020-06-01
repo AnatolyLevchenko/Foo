@@ -11,12 +11,10 @@
 </template>
 
 <script>
-import topHeader from "./Header";
 import pict from "./Picture";
 import MyFooter from "./Footer";
 export default {
   components: {
-    topHeader,
     pict,
     MyFooter
   },
@@ -37,14 +35,6 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-}
-body {
-  box-sizing: border-box;
-  background: #dadada;
-}
 #photos {
   line-height: 0;
   column-count: 5;
